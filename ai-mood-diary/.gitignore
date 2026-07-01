@@ -1,0 +1,11 @@
+venv/
+venv312/
+venv_new/
+node_modules/
+.env
+*.pyc
+__pycache__/
+dist/
+build/
+.DS_Store
+*.log

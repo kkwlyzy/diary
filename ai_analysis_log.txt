@@ -1,0 +1,446 @@
+
+=== 40 - 开始分析 ===
+user_id: 4
+content: 今天心情非常好，阳光明媚，和朋友一起去了公园散步，感觉生活很美好。...
+title: AI测试
+  [ai_service] ARK_API_KEY: ark-1ae80380-6578-4a...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 401
+  [ai_service] 错误: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 68, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\venv312\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 数据库会话关闭
+=== 40 - 分析完成 ===
+
+=== 41 - 开始分析 ===
+user_id: 9
+content: 今天下雨，路滑我自己摔了一跤，疼死了...
+title: 唉
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 1768
+  [ai_service] 提取文本长度: 179
+  [ai_service] 文本内容: ```json
+{
+    "emotion_label": "sad",
+    "emotion_score": 0.72,
+    "analysis_detail": "标题一声叹息，配合摔跤的不幸遭遇，透露出低落和委屈的悲伤情绪。",
+    "suggestion": "下雨天路滑要小心哦，记得擦点药酒，早点休息，明天会好起来的。"
+}
+```...
+  [ai_service] 解析JSON成功: emotion=sad
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=sad
+  [ai_service] 数据库会话关闭
+=== 41 - 分析完成 ===
+
+=== 42 - 开始分析 ===
+user_id: 10
+content: 这是一篇测试日记的内容...
+title: 测试日记标题
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 1446
+  [ai_service] 提取文本长度: 196
+  [ai_service] 文本内容: ```json
+{
+    "emotion_label": "calm",
+    "emotion_score": 0.50,
+    "analysis_detail": "这是一篇测试性质的日记，内容中性的表述，没有明显情绪波动，整体呈现出平静的状态。",
+    "suggestion": "无论日记内容如何，记录本身就是一个很好的习惯。期待听到你真实的心情故事哦~"
+}
+```...
+  [ai_service] 解析JSON成功: emotion=calm
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=calm
+  [ai_service] 数据库会话关闭
+=== 42 - 分析完成 ===
+
+=== 43 - 开始分析 ===
+user_id: 10
+content: 这是一篇测试日记的内容...
+title: 测试日记标题
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 1358
+  [ai_service] 提取文本长度: 186
+  [ai_service] 文本内容: ```json
+{
+    "emotion_label": "calm",
+    "emotion_score": 0.75,
+    "analysis_detail": "日记内容较为平淡，未表现出明显的情绪波动，整体呈现出平静中性的状态。",
+    "suggestion": "平静是一种美好的状态，愿你每一天都能享受这份宁静，感受生活的温柔。"
+}
+```...
+  [ai_service] 解析JSON成功: emotion=calm
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=calm
+  [ai_service] 数据库会话关闭
+=== 43 - 分析完成 ===
+
+=== 44 - 开始分析 ===
+user_id: 9
+content: 今天中彩票了...
+title: 很开心今天
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 1451
+  [ai_service] 提取文本长度: 179
+  [ai_service] 文本内容: {
+    "emotion_label": "happy",
+    "emotion_score": 0.95,
+    "analysis_detail": "中彩票带来了强烈的喜悦和兴奋，标题直接表达'很开心'，情绪非常积极高涨。",
+    "suggestion": "这样的幸运值得庆祝，不妨与亲近的人分享喜悦，也可以温柔地规划一下未来。"
+}...
+  [ai_service] 解析JSON成功: emotion=happy
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=happy
+  [ai_service] 数据库会话关闭
+=== 44 - 分析完成 ===
+
+=== 45 - 开始分析 ===
+user_id: 9
+content: 今天出去玩了，心情很棒...
+title: 
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 1522
+  [ai_service] 提取文本长度: 186
+  [ai_service] 文本内容: {
+    "emotion_label": "happy",
+    "emotion_score": 0.90,
+    "analysis_detail": "日记内容简短明快，直接表达了外出游玩带来的愉悦心情，整体情绪积极且充满活力。",
+    "suggestion": "很高兴你拥有这样美好的时刻，不妨多记录这些快乐点滴，它们会成为你未来温暖的回憶。"
+}...
+  [ai_service] 解析JSON成功: emotion=happy
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=happy
+  [ai_service] 数据库会话关闭
+=== 45 - 分析完成 ===
+
+=== 46 - 开始分析 ===
+user_id: 9
+content: ...
+title: 
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 429
+  [ai_service] 错误: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 68, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\venv312\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 数据库会话关闭
+=== 46 - 分析完成 ===
+
+=== 47 - 开始分析 ===
+user_id: 9
+content: 中彩票了...
+title: 开心
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 429
+  [ai_service] 错误: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 68, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\venv312\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 数据库会话关闭
+=== 47 - 分析完成 ===
+
+=== 48 - 开始分析 ===
+user_id: 9
+content: 中彩票了...
+title: 牛逼
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 429
+  [ai_service] 错误: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 68, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\venv312\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 数据库会话关闭
+=== 48 - 分析完成 ===
+
+=== 49 - 开始分析 ===
+user_id: 9
+content: asdfasfd...
+title: asdf
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 429
+  [ai_service] 错误: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 68, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\venv312\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 数据库会话关闭
+=== 49 - 分析完成 ===
+
+=== 44 - 开始分析 ===
+user_id: 9
+content: 今天虽然有一点小雨，但是我们去看了动物园，赶紧非常好玩...
+title: 去动物园
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 5438
+  [ai_service] 提取文本长度: 160
+  [ai_service] 文本内容: {
+    "emotion_label": "happy",
+    "emotion_score": 0.85,
+    "analysis_detail": "虽遇小雨仍出游逛动物园，因觉得好玩，呈现愉悦的正向情绪",
+    "suggestion": "珍藏这份出游的小美好，有空可以多去体验喜欢的事物呀"
+}...
+  [ai_service] 解析JSON成功: emotion=happy
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=happy
+  [ai_service] 数据库会话关闭
+=== 44 - 分析完成 ===
+
+=== 45 - 开始分析 ===
+user_id: 5
+content: ??????,????...
+title: ????
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 8069
+  [ai_service] 提取文本长度: 161
+  [ai_service] 文本内容: {
+    "emotion_label": "anxious",
+    "emotion_score": 0.65,
+    "analysis_detail": "通篇为问号，可见你当下思绪杂乱满是疑惑，有明显焦虑感。",
+    "suggestion": "不妨先深呼吸，试着把心里的困惑逐一列出来梳理哦。"
+}...
+  [ai_service] 解析JSON成功: emotion=anxious
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=anxious
+  [ai_service] 数据库会话关闭
+=== 45 - 分析完成 ===
+
+=== 46 - 开始分析 ===
+user_id: 5
+content: ??????????...
+title: ????
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] 错误: HTTPSConnectionPool(host='ark.cn-beijing.volces.com', port=443): Read timed out. (read timeout=30)
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "D:\Applications\workSum\python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 1251, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 1103, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='ark.cn-beijing.volces.com', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 58, in analyze_emotion
+    resp = requests.post(
+           ^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\requests\api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\venv_new\Lib\site-packages\requests\adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='ark.cn-beijing.volces.com', port=443): Read timed out. (read timeout=30)
+  [ai_service] 数据库会话关闭
+=== 46 - 分析完成 ===
+
+=== 47 - 开始分析 ===
+user_id: 5
+content: 今天天气很好心情不错...
+title: 测试日记
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 4401
+  [ai_service] 提取文本长度: 161
+  [ai_service] 文本内容: {
+    "emotion_label": "happy",
+    "emotion_score": 0.80,
+    "analysis_detail": "日记提及天气晴好，自述心情不错，呈现出积极愉悦的正向情绪",
+    "suggestion": "可以趁着好天气外出走走，好好享受这份轻松的好心情~"
+}...
+  [ai_service] 解析JSON成功: emotion=happy
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=happy
+  [ai_service] 数据库会话关闭
+=== 47 - 分析完成 ===
+
+=== 48 - 开始分析 ===
+user_id: 13
+content: 今天摔了一跤，但是我中彩票了...
+title: test
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 5587
+  [ai_service] 提取文本长度: 161
+  [ai_service] 文本内容: {
+    "emotion_label": "happy",
+    "emotion_score": 0.85,
+    "analysis_detail": "虽有摔跤的小不快，但中彩票的喜事带来明显愉悦，快乐占主导",
+    "suggestion": "好好享受中奖的喜悦，也别忘了照料摔跤带来的小不适哦"
+}...
+  [ai_service] 解析JSON成功: emotion=happy
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=happy
+  [ai_service] 数据库会话关闭
+=== 48 - 分析完成 ===
+
+=== 49 - 开始分析 ===
+user_id: 9
+content: 今天的天气也很凉快，伴随着早晨上课，很舒服，也不烦躁
+...
+title: 早
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 1069
+  [ai_service] 提取文本长度: 137
+  [ai_service] 文本内容: {
+  "emotion_label": "calm",
+  "emotion_score": 0.86,
+  "analysis_detail": "天气凉快、上课舒适，整体心情平静放松。",
+  "suggestion": "愿你继续享受这样的清晨，保持轻松节奏。"
+}...
+  [ai_service] 解析JSON成功: emotion=calm
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=calm
+  [ai_service] 数据库会话关闭
+=== 49 - 分析完成 ===

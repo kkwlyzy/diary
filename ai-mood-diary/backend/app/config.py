@@ -1,0 +1,25 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
+
+# 数据库配置
+DB_CONFIG = {
+    "host": os.getenv("DB_HOST", "192.168.100.130"),
+    "port": int(os.getenv("DB_PORT", 3306)),
+    "user": os.getenv("DB_USER", "bookadmin"),
+    "password": os.getenv("DB_PASSWORD", "123456"),
+    "database": os.getenv("DB_NAME", "ai_mood_diary"),
+}
+
+DATABASE_URL = f"mysql+pymysql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}?charset=utf8mb4"
+
+# JWT 配置
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "ai-mood-diary-secret-key-2024")
+JWT_ALGORITHM = "HS256"
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24小时
+
+# 火山引擎方舟 AI 配置（Coding Plan - Anthropic 兼容接口）
+ARK_API_KEY = os.getenv("ARK_API_KEY", "ark-008c7019-c676-43cd-98c3-967476ca543b-56875")
+ARK_API_BASE = os.getenv("ARK_API_BASE", "https://ark.cn-beijing.volces.com/api/coding")
+ARK_MODEL = os.getenv("ARK_MODEL", "ark-code-latest")

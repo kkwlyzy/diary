@@ -4,7 +4,6 @@ print("Step 1: Loading config...")
 sys.stdout.flush()
 
 import os
-os.environ['ARK_API_KEY'] = 'ark-008c7019-c676-43cd-98c3-967476ca543b-56875'
 
 print("Step 2: Loading database...")
 sys.stdout.flush()

@@ -19,7 +19,7 @@
 
         <div class="divider"></div>
 
-        <div v-if="emotion" class="emotion-card">
+        <div v-if="aiStatus === 'completed'" class="emotion-card">
           <h3>AI 情绪分析</h3>
           <div class="emotion-item">
             <span class="emotion-label">情绪：</span>
@@ -34,6 +34,10 @@
             <span class="emotion-label">建议：</span>
             <span class="emotion-text">{{ emotion.suggestion }}</span>
           </div>
+        </div>
+        <div v-else-if="aiStatus === 'unavailable'" class="emotion-card unavailable">
+          <h3>AI 情绪分析</h3>
+          <p class="unavailable-text">AI暂不可用</p>
         </div>
         <div v-else class="emotion-card loading">
           <p>AI 情绪分析正在生成中，请稍后查看...</p>
@@ -57,6 +61,7 @@ const route = useRoute()
 const loading = ref(true)
 const diary = ref(null)
 const emotion = ref(null)
+const aiStatus = ref('pending')
 
 const moodMap = { 
   happy: ['mood-happy', '快乐'], 
@@ -75,6 +80,7 @@ onMounted(async () => {
     const res = await diaryAPI.get(route.params.id)
     diary.value = res.diary
     emotion.value = res.emotion
+    aiStatus.value = res.ai_status || 'pending'
   } catch (err) { /* ignore */ }
   loading.value = false
 })
@@ -146,6 +152,23 @@ onMounted(async () => {
 
 .emotion-card.loading {
   background: rgba(255, 255, 255, 0.04);
+}
+
+.emotion-card.unavailable {
+  background: rgba(245, 108, 108, 0.08);
+  border-color: rgba(245, 108, 108, 0.2);
+}
+
+.emotion-card.unavailable h3 {
+  color: #f56c6c;
+}
+
+.unavailable-text {
+  color: #f56c6c;
+  font-size: 15px;
+  text-align: center;
+  padding: 12px 0;
+  margin: 0;
 }
 
 .emotion-card h3 {

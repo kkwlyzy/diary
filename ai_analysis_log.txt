@@ -444,3 +444,477 @@ title: 早
   [ai_service] AI分析完成: emotion=calm
   [ai_service] 数据库会话关闭
 === 49 - 分析完成 ===
+
+=== 50 - 开始分析 ===
+user_id: 9
+content: 内容多死了，背不完...
+title: cao
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] 错误: HTTPSConnectionPool(host='ark.cn-beijing.volces.com', port=443): Max retries exceeded with url: /api/coding/v1/messages (Caused by NameResolutionError("HTTPSConnection(host='ark.cn-beijing.volces.com', port=443): Failed to resolve 'ark.cn-beijing.volces.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='ark.cn-beijing.volces.com', port=443): Failed to resolve 'ark.cn-beijing.volces.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='ark.cn-beijing.volces.com', port=443): Max retries exceeded with url: /api/coding/v1/messages (Caused by NameResolutionError("HTTPSConnection(host='ark.cn-beijing.volces.com', port=443): Failed to resolve 'ark.cn-beijing.volces.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 58, in analyze_emotion
+    resp = requests.post(
+           ^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ark.cn-beijing.volces.com', port=443): Max retries exceeded with url: /api/coding/v1/messages (Caused by NameResolutionError("HTTPSConnection(host='ark.cn-beijing.volces.com', port=443): Failed to resolve 'ark.cn-beijing.volces.com' ([Errno 11001] getaddrinfo failed)"))
+  [ai_service] 数据库会话关闭
+=== 50 - 分析完成 ===
+
+=== 51 - 开始分析 ===
+user_id: 9
+content: ...
+title: 不开心的有一天
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 650
+  [ai_service] 提取文本长度: 148
+  [ai_service] 文本内容: {
+    "emotion_label": "sad",
+    "emotion_score": 0.60,
+    "analysis_detail": "标题明确表示不开心，整体带有明显的低落悲伤倾向",
+    "suggestion": "允许自己低落一会儿，做点小事哄哄自己呀"
+}...
+  [ai_service] 解析JSON成功: emotion=sad
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=sad
+  [ai_service] 数据库会话关闭
+=== 51 - 分析完成 ===
+
+=== 52 - 开始分析 ===
+user_id: 9
+content: 今天要考试了，好焦虑...
+title: 哎呦
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 666
+  [ai_service] 提取文本长度: 154
+  [ai_service] 文本内容: {
+    "emotion_label": "anxious",
+    "emotion_score": 0.80,
+    "analysis_detail": "日记明确提到即将考试，内心充满紧张焦虑的情绪",
+    "suggestion": "试试深呼吸放松，已经准备很久啦，你一定可以的"
+}...
+  [ai_service] 解析JSON成功: emotion=anxious
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=anxious
+  [ai_service] 数据库会话关闭
+=== 52 - 分析完成 ===
+
+=== 53 - 开始分析 ===
+user_id: 9
+content: 考试内容大纲太多 ，复习不完了...
+title: 考试内容大纲太多
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 702
+  [ai_service] 提取文本长度: 160
+  [ai_service] 文本内容: {
+    "emotion_label": "anxious",
+    "emotion_score": 0.75,
+    "analysis_detail": "面对过多的考试大纲内容，担心复习不完，心生焦虑烦躁",
+    "suggestion": "拆分任务慢慢来，能记多少是多少，别给自己太大压力呀"
+}...
+  [ai_service] 解析JSON成功: emotion=anxious
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=anxious
+  [ai_service] 数据库会话关闭
+=== 53 - 分析完成 ===
+
+=== 54 - 开始分析 ===
+user_id: 9
+content: 烦死了，要考试了...
+title: 焦虑
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 696
+  [ai_service] 提取文本长度: 159
+  [ai_service] 文本内容: {
+    "emotion_label": "anxious",
+    "emotion_score": 0.75,
+    "analysis_detail": "临近考试，用户内心烦躁，有着明显的考试焦虑情绪",
+    "suggestion": "试着慢慢深呼吸，按计划复习就好，你已经准备得很不错啦"
+}...
+  [ai_service] 解析JSON成功: emotion=anxious
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=anxious
+  [ai_service] 数据库会话关闭
+=== 54 - 分析完成 ===
+
+=== 55 - 开始分析 ===
+user_id: 9
+content: 草...
+title: sdaklfj
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 724
+  [ai_service] 提取文本长度: 162
+  [ai_service] 文本内容: {
+    "emotion_label": "angry",
+    "emotion_score": 0.85,
+    "analysis_detail": "内容仅写了脏话，大概率是遇到不顺心的事，愤怒情绪较强",
+    "suggestion": "试着深呼吸冷静，不开心可以找方式发泄出来，会慢慢好起来的"
+}...
+  [ai_service] 解析JSON成功: emotion=angry
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=angry
+  [ai_service] 数据库会话关闭
+=== 55 - 分析完成 ===
+
+=== 56 - 开始分析 ===
+user_id: 9
+content: 要考试了，好紧张...
+title: 不开心
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 672
+  [ai_service] 提取文本长度: 155
+  [ai_service] 文本内容: {
+    "emotion_label": "anxious",
+    "emotion_score": 0.70,
+    "analysis_detail": "临近考试感到紧张，整体是因考试压力引发的焦虑情绪",
+    "suggestion": "试着慢慢深呼吸，做好复习就好，你一定可以的"
+}...
+  [ai_service] 解析JSON成功: emotion=anxious
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=anxious
+  [ai_service] 数据库会话关闭
+=== 56 - 分析完成 ===
+
+=== 57 - 开始分析 ===
+user_id: 9
+content: 很平静...
+title: 心
+  [ai_service] ARK_API_KEY: ark-008c7019-c676-43...
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 200
+  [ai_service] API响应长度: 864
+  [ai_service] 提取文本长度: 186
+  [ai_service] 文本内容: {
+    "emotion_label": "calm",
+    "emotion_score": 0.85,
+    "analysis_detail": "日记中'很平静'三字流露出内心的安宁与稳定，情绪处于舒缓状态，没有明显波动。",
+    "suggestion": "平静是难得的心灵礼物，愿你珍惜此刻的宁静，也可尝试记录让你安心的事物，让美好延续。"
+}...
+  [ai_service] 解析JSON成功: emotion=calm
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=calm
+  [ai_service] 数据库会话关闭
+=== 57 - 分析完成 ===
+
+=== 58 - 开始分析 ===
+user_id: 9
+content: 今天很平静，不急不躁刚刚好
+...
+title: 心如之水
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 401
+  [ai_service] 错误: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "e:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 69, in analyze_emotion
+    resp.raise_for_status()
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 数据库会话关闭
+=== 58 - 分析完成 ===
+
+=== 59 - 开始分析 ===
+user_id: 9
+content: 一般般，不急不躁
+...
+title: 
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] 错误: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+Traceback (most recent call last):
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\util\ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\util\ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\util\ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\urllib3\util\ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "D:\Applications\workSum\python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 59, in analyze_emotion
+    resp = requests.post(
+           ^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\keshe\ai-mood-diary\backend\packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+  [ai_service] 数据库会话关闭
+=== 59 - 分析完成 ===
+
+=== 60 - 开始分析 ===
+user_id: 9
+content: 平静...
+title: 
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 401
+  [ai_service] 错误: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 69, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 已写入 unavailable 标记
+  [ai_service] 数据库会话关闭
+=== 60 - 分析完成 ===
+
+=== 61 - 开始分析 ===
+user_id: 9
+content: ok呀 终于可用放松了
+...
+title: 
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 401
+  [ai_service] 错误: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 69, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 已写入 unavailable 标记
+  [ai_service] 数据库会话关闭
+=== 61 - 分析完成 ===
+
+=== 62 - 开始分析 ===
+user_id: 9
+content: 很平静...
+title: 
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] API响应状态: 401
+  [ai_service] 错误: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+Traceback (most recent call last):
+  File "E:\keshe\ai-mood-diary\backend\app\services\ai_service.py", line 69, in analyze_emotion
+    resp.raise_for_status()
+  File "E:\keshe\ai-mood-diary\backend\packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://ark.cn-beijing.volces.com/api/coding/v1/messages
+  [ai_service] 已写入 unavailable 标记
+  [ai_service] 数据库会话关闭
+=== 62 - 分析完成 ===
+
+=== 63 - 开始分析 ===
+user_id: 9
+content: 很平静...
+title: 
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] 第1次, API响应状态: 200
+  [ai_service] API响应长度: 808
+  [ai_service] 提取文本长度: 175
+  [ai_service] 文本内容: {
+    "emotion_label": "calm",
+    "emotion_score": 0.80,
+    "analysis_detail": "内心处于平和稳定的状态，情绪波动较小，呈现出一种安宁自在的心境。",
+    "suggestion": "平静是一份珍贵的礼物，试着记录此刻的感受，让这份从容陪伴你走过更多日子。"
+}...
+  [ai_service] 解析JSON成功: emotion=calm
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=calm
+  [ai_service] 数据库会话关闭
+=== 63 - 分析完成 ===

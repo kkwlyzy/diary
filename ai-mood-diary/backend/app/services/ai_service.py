@@ -1,6 +1,7 @@
 import json
 import requests
 import logging
+import time
 from sqlalchemy.orm import Session
 from ..config import ARK_API_KEY, ARK_API_BASE, ARK_MODEL
 from ..models.emotion import EmotionAnalysis
@@ -13,10 +14,11 @@ logger = logging.getLogger(__name__)
 
 
 def analyze_emotion(diary_id: int, user_id: int, content: str, title: str = ""):
-    log_path = r"e:\keshe\ai_analysis_log.txt"
+    import os as _os
+    _BASE_DIR = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.dirname(__file__)))))
+    log_path = _os.path.join(_BASE_DIR, "ai_analysis_log.txt")
     
     with open(log_path, "a", encoding="utf-8") as f:
-        f.write(f"  [ai_service] ARK_API_KEY: {ARK_API_KEY[:20]}...\n")
         f.write(f"  [ai_service] ARK_API_BASE: {ARK_API_BASE}\n")
         f.write(f"  [ai_service] ARK_MODEL: {ARK_MODEL}\n")
 
@@ -55,18 +57,50 @@ def analyze_emotion(diary_id: int, user_id: int, content: str, title: str = ""):
             f.write(f"  [ai_service] 数据库会话创建成功\n")
             f.write(f"  [ai_service] 开始调用API...\n")
         
-        resp = requests.post(
-            f"{ARK_API_BASE}/v1/messages",
-            headers=headers,
-            json=payload,
-            timeout=30,
-        )
+        max_retries = 3
+        retry_delays = [3, 6, 12]
+        result = None
+        last_error = None
         
-        with open(log_path, "a", encoding="utf-8") as f:
-            f.write(f"  [ai_service] API响应状态: {resp.status_code}\n")
+        for attempt in range(max_retries):
+            try:
+                resp = requests.post(
+                    f"{ARK_API_BASE}/v1/messages",
+                    headers=headers,
+                    json=payload,
+                    timeout=30,
+                )
+                
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(f"  [ai_service] 第{attempt+1}次, API响应状态: {resp.status_code}\n")
+                
+                # 可重试的错误码：429限流、5xx服务端错误
+                if resp.status_code in (429, 500, 502, 503, 504):
+                    if attempt < max_retries - 1:
+                        delay = retry_delays[attempt]
+                        with open(log_path, "a", encoding="utf-8") as f:
+                            f.write(f"  [ai_service] {resp.status_code}错误, {delay}秒后重试...\n")
+                        time.sleep(delay)
+                        continue
+                
+                resp.raise_for_status()
+                result = resp.json()
+                break
+                
+            except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+                last_error = e
+                if attempt < max_retries - 1:
+                    delay = retry_delays[attempt]
+                    with open(log_path, "a", encoding="utf-8") as f:
+                        f.write(f"  [ai_service] 网络错误, {delay}秒后重试: {e}\n")
+                    time.sleep(delay)
+                    continue
+                raise
         
-        resp.raise_for_status()
-        result = resp.json()
+        if result is None:
+            if last_error:
+                raise last_error
+            raise Exception("AI API 调用失败：已达最大重试次数")
         
         with open(log_path, "a", encoding="utf-8") as f:
             f.write(f"  [ai_service] API响应长度: {len(json.dumps(result))}\n")
@@ -114,6 +148,24 @@ def analyze_emotion(diary_id: int, user_id: int, content: str, title: str = ""):
             f.write(traceback.format_exc())
         if db:
             db.rollback()
+            # AI 分析失败时写入标记记录，前端据此显示"AI暂不可用"
+            try:
+                fallback = EmotionAnalysis(
+                    diary_id=diary_id,
+                    user_id=user_id,
+                    emotion_label="unavailable",
+                    emotion_score=0,
+                    analysis_detail="AI 服务暂不可用，请稍后重试",
+                    suggestion="AI暂不可用",
+                    model_used=ARK_MODEL,
+                )
+                db.add(fallback)
+                db.commit()
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(f"  [ai_service] 已写入 unavailable 标记\n")
+            except Exception as fe:
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(f"  [ai_service] 写入标记失败: {fe}\n")
     finally:
         if db:
             db.close()

@@ -14,8 +14,8 @@ services:
       - DB_NAME=${DB_NAME:-ai_mood_diary}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-ai-mood-diary-secret-key-2024}
       - ARK_API_KEY=${ARK_API_KEY}
-      - ARK_API_BASE=${ARK_API_BASE:-https://ark.cn-beijing.volces.com/api/coding}
-      - ARK_MODEL=${ARK_MODEL:-ark-code-latest}
+      - ARK_API_BASE=${ARK_API_BASE}
+      - ARK_MODEL=${ARK_MODEL}
     restart: unless-stopped
 
   frontend:

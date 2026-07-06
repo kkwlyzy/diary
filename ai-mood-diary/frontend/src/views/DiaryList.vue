@@ -75,7 +75,7 @@
         />
       </div>
 
-      <div class="ai-analysis-card" v-if="todayAnalysis">
+      <div class="ai-analysis-card" v-if="aiStatus === 'completed' && todayAnalysis">
         <div class="ai-header">
           <span class="ai-icon">🤖</span>
           <span class="ai-title">今日 AI 情绪分析</span>
@@ -97,6 +97,14 @@
             <span class="suggestion-text">{{ todayAnalysis.suggestion }}</span>
           </div>
         </div>
+      </div>
+
+      <div class="ai-analysis-card unavailable" v-else-if="aiStatus === 'unavailable'">
+        <div class="ai-header">
+          <span class="ai-icon">🤖</span>
+          <span class="ai-title">今日 AI 情绪分析</span>
+        </div>
+        <p class="unavailable-text">AI暂不可用</p>
       </div>
 
       <div class="ai-analysis-card empty" v-else-if="!analysisLoading">
@@ -125,6 +133,7 @@ const selectedIds = ref([])
 const filter = reactive({ mood_tag: '', dateRange: null })
 const todayAnalysis = ref(null)
 const analysisLoading = ref(true)
+const aiStatus = ref('pending')
 
 const moodMap = { 
   happy: ['mood-happy', '快乐'], 
@@ -188,11 +197,17 @@ async function loadTodayAnalysis() {
   analysisLoading.value = true
   try {
     const res = await request.get('/ai/today-analysis')
+    aiStatus.value = res.ai_status || 'pending'
     if (res.analysis) {
       todayAnalysis.value = res.analysis
+    } else if (res.ai_status === 'unavailable') {
+      todayAnalysis.value = { emotion_label: 'unavailable' }
+    } else {
+      todayAnalysis.value = null
     }
   } catch (err) {
     console.error('加载今日分析失败', err)
+    aiStatus.value = 'unavailable'
   }
   analysisLoading.value = false
 }
@@ -508,6 +523,23 @@ onMounted(() => {
 
 .ai-analysis-card.empty {
   text-align: center;
+}
+
+.ai-analysis-card.unavailable {
+  text-align: center;
+  border-color: rgba(245, 108, 108, 0.2);
+  background: rgba(245, 108, 108, 0.06);
+}
+
+.ai-analysis-card.unavailable .ai-title {
+  color: #f56c6c;
+}
+
+.unavailable-text {
+  color: #f56c6c;
+  font-size: 15px;
+  padding: 12px 0;
+  margin: 0;
 }
 
 .empty-content {

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from ..database import get_db
 from ..services import ai_service
 from ..models.emotion import EmotionAnalysis
@@ -41,10 +41,22 @@ def get_today_analysis(payload: dict = Depends(verify_token), db: Session = Depe
     ).first()
     
     if not analysis:
-        return {"message": "AI分析正在生成中", "analysis": None}
+        # 时间判断：日记创建超过60秒仍无分析 → 视为失败
+        if diary.created_at and (datetime.now(timezone.utc) - diary.created_at.replace(tzinfo=timezone.utc)) > timedelta(seconds=60):
+            return {"message": "AI暂不可用", "analysis": None, "ai_status": "unavailable"}
+        return {"message": "AI分析正在生成中", "analysis": None, "ai_status": "pending"}
+    
+    if analysis.emotion_label == "unavailable":
+        return {
+            "message": "AI暂不可用",
+            "analysis": EmotionAnalysisResponse.model_validate(analysis).model_dump(),
+            "diary_title": diary.title,
+            "ai_status": "unavailable",
+        }
     
     return {
         "message": "success",
         "analysis": EmotionAnalysisResponse.model_validate(analysis).model_dump(),
         "diary_title": diary.title,
+        "ai_status": "completed",
     }

@@ -2,7 +2,7 @@ import sys
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from typing import Optional
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from ..database import get_db
 from ..schemas.diary import (
     DiaryCreate, DiaryUpdate, DiaryResponse, DiaryListResponse,
@@ -66,9 +66,21 @@ def get_diary(diary_id: int, payload: dict = Depends(verify_token), db: Session 
     try:
         diary = diary_service.get_diary(db, diary_id, user_id)
         emotion = db.query(EmotionAnalysis).filter(EmotionAnalysis.diary_id == diary_id).first()
+
+        # 判断 AI 分析状态
+        if emotion and emotion.emotion_label != "unavailable":
+            ai_status = "completed"
+        elif emotion and emotion.emotion_label == "unavailable":
+            ai_status = "unavailable"
+        elif diary.created_at and (datetime.now(timezone.utc) - diary.created_at.replace(tzinfo=timezone.utc)) > timedelta(seconds=60):
+            ai_status = "unavailable"
+        else:
+            ai_status = "pending"
+
         return {
             "diary": DiaryResponse.model_validate(diary).model_dump(),
             "emotion": EmotionAnalysisResponse.model_validate(emotion).model_dump() if emotion else None,
+            "ai_status": ai_status,
         }
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))

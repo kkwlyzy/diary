@@ -942,3 +942,27 @@ title:
   [ai_service] AI分析完成: emotion=calm
   [ai_service] 数据库会话关闭
 === 64 - 分析完成 ===
+
+=== 65 - 开始分析 ===
+user_id: 9
+content: 今天很开心...
+title: 
+  [ai_service] ARK_API_BASE: https://ark.cn-beijing.volces.com/api/coding
+  [ai_service] ARK_MODEL: ark-code-latest
+  [ai_service] 创建数据库会话...
+  [ai_service] 数据库会话创建成功
+  [ai_service] 开始调用API...
+  [ai_service] 第1次, API响应状态: 200
+  [ai_service] API响应长度: 901
+  [ai_service] 提取文本长度: 193
+  [ai_service] 文本内容: {
+    "emotion_label": "happy",
+    "emotion_score": 0.85,
+    "analysis_detail": "日记流露出明显的愉悦情绪，虽然内容简短，但'开心'一词直接表达了积极正面的心理状态。",
+    "suggestion": "很高兴看到你今天心情愉快！不妨记录下让你开心的具体小事，日后翻看会成为温暖的力量源泉。"
+}...
+  [ai_service] 解析JSON成功: emotion=happy
+  [ai_service] 数据库提交成功
+  [ai_service] AI分析完成: emotion=happy
+  [ai_service] 数据库会话关闭
+=== 65 - 分析完成 ===

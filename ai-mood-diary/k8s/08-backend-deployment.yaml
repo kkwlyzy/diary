@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mood-diary-backend
+  namespace: ai-mood-diary
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mood-diary-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: mood-diary-backend
+    spec:
+      containers:
+        - name: backend
+          image: mood-diary-backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: DB_USER
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: DB_NAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mood-diary-secret
+                  key: DB_PASSWORD
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: JWT_SECRET_KEY
+            - name: ARK_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mood-diary-secret
+                  key: ARK_API_KEY
+            - name: ARK_API_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: ARK_API_BASE
+            - name: ARK_MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: mood-diary-config
+                  key: ARK_MODEL
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      restartPolicy: Always

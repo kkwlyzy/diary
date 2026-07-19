@@ -29,3 +29,8 @@ app.include_router(captcha.router)
 @app.get("/")
 def root():
     return {"message": "AI心情日记 API 服务运行中"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok", "service": "ai-mood-diary-backend"}

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mood-diary-quota
+  namespace: ai-mood-diary
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 2Gi
+    limits.cpu: "3"
+    limits.memory: 4Gi
+    requests.storage: 15Gi
+    persistentvolumeclaims: "5"
+    pods: "10"
+    services: "5"
+    configmaps: "10"
+    secrets: "10"
